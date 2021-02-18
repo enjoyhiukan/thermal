@@ -1,0 +1,4 @@
+camera:
+  platform: thermal
+  host: http://ESPHOME_NODE_IP_ADDRESS:81
+  name: A NAME YOU LIKE
