@@ -1,0 +1,33 @@
+esphome:
+  includes:
+      - amg8833_cc.h
+  libraries:
+    - "Melopero AMG8833"
+
+http_request:
+  #useragent: esphome/device
+  #timeout: 10s
+
+logger:
+  level: DEBUG
+  esp8266_store_log_strings_in_flash: False
+
+custom_component:
+- lambda: |-
+      auto amg8833 = new AMG8833Sensor(id(amg8833_devicetemp), id(amg8833_occupancy));
+      App.register_component(amg8833);
+      return {amg8833};
+
+sensor:
+  - platform: template
+    name: "$devicetag AMG8833 device Temp"
+    id: amg8833_devicetemp
+    unit_of_measurement: °C
+    accuracy_decimals: 1
+  
+binary_sensor:
+  - platform: template
+    name: "$devicetag Occupancy"
+    device_class: occupancy
+    id: amg8833_occupancy
+    

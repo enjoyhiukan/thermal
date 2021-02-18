@@ -1,0 +1,16 @@
+substitutions:
+  devicename: amg8833_test
+  deviceplatform: ESP8266
+  deviceboard: esp01_1m
+  deviceAP: "AMG8833 Test AP"
+  deviceip: !secret amg8833_ip
+  devicetag: AMG8833
+
+packages:
+  commonPIRSensors: !include common/commonPIRSensors.yaml
+  amg8833_cc: !include common/amg8833_cc.yaml
+  common: !include .common.yaml
+  dht11: !include common/dht11.yaml
+  
+esphome:
+  arduino_version: latest
